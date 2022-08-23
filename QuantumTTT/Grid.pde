@@ -1,8 +1,10 @@
 public class Grid {
-  private ArrayList<ArrayList<Tic>> Tiles = new ArrayList<ArrayList<Tic>>(9);
+  private ArrayList<ArrayList<Tic>> Tiles = new ArrayList<ArrayList<Tic>>();
   
   public Grid() {
-    
+    for (int i = 0; i < 9; i++) {
+      Tiles.add(new ArrayList<Tic>());
+    }
   }
   
   public boolean playX (int firstP, int secondP) {
