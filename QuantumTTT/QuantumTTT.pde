@@ -12,7 +12,7 @@ int STANDARD = 2;
 Grid Board;
 int Xcounter = 1;
 int Ocounter = -1;
-int selecting = 1;
+int selecting = -1;
 int firstPick;
 int secondPick;
 
@@ -36,12 +36,15 @@ void draw() {
 
 void mouseClicked() {
   if (TURN == 0) {//currently player is always first and plays X
-    if (selecting == 1) {
-      firstPick = mouseX/300 - 1 + 3*(mouseY/300);
+    if (selecting == -1) {
+      selecting = 1;
+    }
+    else if (selecting == 1) {
+      firstPick = mouseX/300 + 3*(mouseY/300);
       selecting = 2;
     }
-    if (selecting == 2) {
-      secondPick = mouseX/300 - 1 + 3*(mouseY/300);
+    else if (selecting == 2) {
+      secondPick = mouseX/300 + 3*(mouseY/300);
       Board.playX(firstPick, secondPick);
       selecting = 1;
     }
@@ -50,7 +53,7 @@ void mouseClicked() {
 
 void drawBoard() {
   strokeWeight(3);
-  fill(20);
+  stroke(20);
   line(300, 30, 300, 870);
   line(600, 30, 600, 870);
   line(30, 300, 870, 300);

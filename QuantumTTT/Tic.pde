@@ -15,11 +15,11 @@ public class Tic {
     
     if (ID < 0) {
       drawO(xPos, yPos);
-      fill(66, 135, 245, 0.8);
+      stroke(66, 135, 245, 100);
     }
     if (ID > 0) {
       drawX(xPos, yPos);
-      fill(237, 64, 64, 0.8);
+      stroke(237, 64, 64, 100);
     }
     
     int xPosPartner = 300*(partnerLocation % 3) + 100*(location % 3);
@@ -44,14 +44,15 @@ public class Tic {
   
   private void drawX(int xPos, int yPos) {
     strokeWeight(3);
-    fill(237, 64, 64);
+    stroke(237, 64, 64);
     line(xPos+15, yPos+15, xPos+85, yPos+85);
     line(xPos+85, yPos+15, xPos+15, yPos+85);
   }
   
   private void drawO(int xPos, int yPos) {
     strokeWeight(3);
-    fill(66, 135, 245);
+    stroke(66, 135, 245);
+    noFill();
     ellipse(xPos+50, yPos+50, 40, 40);
   }
 }
