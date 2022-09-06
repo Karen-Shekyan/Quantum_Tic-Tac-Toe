@@ -18,6 +18,17 @@ public class Grid {
     }
   }
   
+  public boolean playO (int firstP, int secondP) {
+    if (!entangled(firstP, secondP, 'o')) {
+      Tiles.get(firstP).add(new Tic(firstP, Ocounter, secondP));
+      Tiles.get(secondP).add(new Tic(secondP, Ocounter, firstP));
+      Ocounter--;
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
   private boolean entangled (int firstP, int secondP, char mode) {
     ArrayList<Tic> firstTile = Tiles.get(firstP);
     ArrayList<Tic> secondTile = Tiles.get(secondP);

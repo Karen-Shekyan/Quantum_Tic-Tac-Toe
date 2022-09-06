@@ -53,6 +53,6 @@ public class Tic {
     strokeWeight(3);
     stroke(66, 135, 245);
     noFill();
-    ellipse(xPos+50, yPos+50, 40, 40);
+    ellipse(xPos+50, yPos+50, 70, 70);
   }
 }

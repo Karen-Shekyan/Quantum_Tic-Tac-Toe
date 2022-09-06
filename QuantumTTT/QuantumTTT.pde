@@ -35,7 +35,7 @@ void draw() {
 }
 
 void mouseClicked() {
-  if (TURN == 0) {//currently player is always first and plays X
+  if (TURN == PLAYER) {//currently player is always first and plays X
     if (selecting == -1) {
       selecting = 1;
     }
@@ -45,8 +45,28 @@ void mouseClicked() {
     }
     else if (selecting == 2) {
       secondPick = mouseX/300 + 3*(mouseY/300);
-      Board.playX(firstPick, secondPick);
-      selecting = 1;
+      if (Board.playX(firstPick, secondPick)) {
+        selecting = 1;
+        TURN = CMP;
+      } else {
+        selecting = 1;
+      }
+    }
+  }
+  
+  else if (TURN == CMP) {
+    if (selecting == 1) {
+      firstPick = mouseX/300 + 3*(mouseY/300);
+      selecting = 2;
+    }
+    else if (selecting == 2) {
+      secondPick = mouseX/300 + 3*(mouseY/300);
+      if (Board.playO(firstPick, secondPick)) {
+        selecting = 1;
+        TURN = PLAYER;
+      } else {
+        selecting = 1;
+      }
     }
   }
 }
