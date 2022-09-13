@@ -30,6 +30,20 @@ void draw() {
     background(255);
     drawBoard();
     
+    if (Board.detectCycle()) {
+      ArrayList<Tic> Tics = Board.getTics();
+      ArrayList<Tic> Cycle = Board.getCycle();
+      
+      for (int i = 0; i < Tics.size(); i++) {
+        if (Cycle.contains(Tics.get(i))) {
+          int location = Tics.get(i).getLoc();
+          stroke(0, 200, 0);
+          noFill();
+          rect(300*(location % 3) + 10, 300*(location / 3) + 10, 280, 280);
+        }
+      }
+    }
+    
     Board.display();
   }
 }
@@ -54,7 +68,7 @@ void mouseClicked() {
     }
   }
   
-  else if (TURN == CMP) {
+  else if (TURN == CMP) {//tentative
     if (selecting == 1) {
       firstPick = mouseX/300 + 3*(mouseY/300);
       selecting = 2;

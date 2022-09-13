@@ -2,8 +2,9 @@ public class Tic {
   private int location; //range: [0,8]
   private int ID;
   private int partnerLocation;
+  private Tic partner;
   
-  public Tic (int location, int ID, int partnerLocation) {
+  public Tic (int location, int ID, int partnerLocation) { //<>//
     this.location = location;
     this.ID = ID;
     this.partnerLocation = partnerLocation;
@@ -54,5 +55,15 @@ public class Tic {
     stroke(66, 135, 245);
     noFill();
     ellipse(xPos+50, yPos+50, 70, 70);
+  }
+  
+  public void setPartner(Tic partner) { //<>//
+    if (this.partner == null) {
+      this.partner = partner;  
+    }
+  }
+  
+  public Tic getPartner() {
+    return partner;
   }
 }
